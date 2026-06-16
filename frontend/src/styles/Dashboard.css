@@ -1,0 +1,29 @@
+.dashboard-container {
+    min-height: 100vh;
+    background-color: #f4f6f9;
+}
+
+.dashboard-header {
+    background-color: #4f46e5;
+    color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+}
+
+.dashboard-header nav {
+    display: flex;
+    gap: 20px;
+}
+
+.dashboard-header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+

@@ -1,15 +1,20 @@
-import axios from "axios";
-import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Login from "./pages/LoginPage";
+import Registracija from "./pages/RegistracijaPage";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-
-    useEffect(() => {
-        axios.get("http://localhost:5000/api/test")
-            .then(res => console.log(res.data))
-            .catch(console.error);
-    }, []);
-
-    return <h1>Webshop</h1>;
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/home" element={<Dashboard />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/registracija" element={<Registracija />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
