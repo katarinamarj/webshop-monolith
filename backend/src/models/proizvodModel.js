@@ -3,18 +3,39 @@ const db = require("../db/db");
 async function dohvatiSve() {
     const [rows] = await db.query(`
         SELECT
-            sifra,
-            naziv,
-            opis,
-            cena,
-            dostupna_kolicina,
-            kategorija_id
-        FROM proizvod
+            p.sifra,
+            p.naziv,
+            p.opis,
+            p.cena,
+            p.dostupna_kolicina,
+            k.naziv AS kategorija
+        FROM proizvod p
+        JOIN kategorija k
+            ON p.kategorija_id = k.kategorija_id
     `);
 
     return rows;
 }
 
+async function pronadjiPoSifri(sifra) {
+    const [rows] = await db.query(`
+        SELECT
+            p.sifra,
+            p.naziv,
+            p.opis,
+            p.cena,
+            p.dostupna_kolicina,
+            k.naziv AS kategorija
+        FROM proizvod p
+        JOIN kategorija k
+            ON p.kategorija_id = k.kategorija_id
+        WHERE p.sifra = ?
+    `, [sifra]);
+
+    return rows[0];
+}
+
 module.exports = {
-    dohvatiSve
+    dohvatiSve,
+    pronadjiPoSifri
 };
