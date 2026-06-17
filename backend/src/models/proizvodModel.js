@@ -8,6 +8,7 @@ async function dohvatiSve() {
             p.opis,
             p.cena,
             p.dostupna_kolicina,
+            p.slika,
             k.naziv AS kategorija
         FROM proizvod p
         JOIN kategorija k
@@ -25,6 +26,7 @@ async function pronadjiPoSifri(sifra) {
             p.opis,
             p.cena,
             p.dostupna_kolicina,
+            p.slika,
             k.naziv AS kategorija
         FROM proizvod p
         JOIN kategorija k
