@@ -9,3 +9,7 @@ export const dohvatiProizvode = () => {
 export const dohvatiKategorije = () => {
     return axios.get(`${API_URL}/kategorije`);
 };
+
+export const dohvatiProizvod = (sifra) => {
+    return axios.get(`${API_URL}/proizvodi/${sifra}`);
+};

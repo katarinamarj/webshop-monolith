@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import { dohvatiProizvode, dohvatiKategorije } from "../services/dashboardService";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
     const prijavljen = !!localStorage.getItem("accessToken");
@@ -92,9 +93,11 @@ function Dashboard() {
 
                                 <h3>{proizvod.naziv}</h3>
 
-                                <button>
-                                    Detalji
-                                </button>
+                                <Link to={`/proizvodi/${proizvod.sifra}`}>
+                                    <button>
+                                        Detalji
+                                    </button>
+                                </Link>
                             </div>
                         )
                     )}

@@ -1,0 +1,82 @@
+body {
+    background: #121212;
+}
+
+.detalji-container {
+    max-width: 75%;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.detalji-card {
+    display: flex;
+    gap: 40px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.detalji-slika {
+    flex: 1;
+}
+
+.detalji-slika img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+.detalji-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.detalji-info h1 {
+    font-size: 2rem; 
+    margin-bottom: 10px;
+}
+
+.kupovina-sekcija {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cena {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4f46e5;
+    margin: 0;
+}
+
+.korpa-btn {
+    width: 150px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 12px;
+    background: #4f46e5;
+    color: white;
+    cursor: pointer;
+}
+
+.kategorija {
+    color: #9ca3af;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.opis {
+    color: #d1d5db;
+    line-height: 1.7;
+}
+.korpa-btn:hover:not(:disabled) {
+    background: #4338ca;
+}
+
+.korpa-btn:disabled {
+    background: #444;
+    cursor: not-allowed;
+}
