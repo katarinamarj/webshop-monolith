@@ -56,14 +56,16 @@ async function prijava(email, lozinka) {
     );
 
     const refreshToken = jwt.sign(
-        {
-            korisnikId: korisnik.korisnik_id
-        },
-        process.env.JWT_REFRESH_SECRET,
-        {
-            expiresIn: "7d"
-        }
-    );
+    {
+        korisnikId: korisnik.korisnik_id,
+        email: korisnik.email,
+        uloga: korisnik.uloga
+    },
+    process.env.JWT_REFRESH_SECRET,
+    {
+        expiresIn: "7d"
+    }
+);
 
     const datumIsteka = new Date();
     datumIsteka.setDate(datumIsteka.getDate() + 7);

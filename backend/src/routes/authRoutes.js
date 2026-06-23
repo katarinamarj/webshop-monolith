@@ -7,4 +7,6 @@ router.post("/prijava", authController.prijava);
 
 router.post("/logout", authController.logout);
 
+router.post("/refresh", authController.refreshToken);
+
 module.exports = router;
