@@ -80,6 +80,16 @@ async function obrisiStavku(stavkaKorpeId) {
     await db.execute(sql, [stavkaKorpeId]);
 }
 
+async function isprazniKorpu(korpaId) {
+    await db.query(
+        `
+        DELETE FROM stavka_korpe
+        WHERE korpa_id = ?
+        `,
+        [korpaId]
+    );
+}
+
 module.exports = {
     pronadjiKorpuPoKorisniku,
     kreirajKorpu,
@@ -87,5 +97,6 @@ module.exports = {
     dodajStavku,
     povecajKolicinu,
     dohvatiKorpu,
-    obrisiStavku
+    obrisiStavku,
+    isprazniKorpu
 };

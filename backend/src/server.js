@@ -4,6 +4,7 @@ const authRoutes = require("./routes/authRoutes");
 const proizvodRoutes = require("./routes/proizvodRoutes");
 const kategorijaRoutes = require("./routes/kategorijaRoutes");
 const korpaRoutes = require("./routes/korpaRoutes");
+const porudzbinaRoutes = require("./routes/porudzbinaRoutes");
 
 const app = express();
 const path = require("path");
@@ -20,6 +21,7 @@ app.use("/uploads",
     )
 );
 app.use("/api/korpa", korpaRoutes);
+app.use("/api/porudzbine", porudzbinaRoutes);
 
 app.listen(5000, () => {
     console.log("Server radi na portu 5000");

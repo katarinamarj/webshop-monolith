@@ -39,7 +39,20 @@ async function pronadjiPoSifri(sifra) {
     return rows[0];
 }
 
+async function smanjiKolicinu(sifra,kolicina) {
+    await db.query(
+        `
+        UPDATE proizvod
+        SET dostupna_kolicina =
+            dostupna_kolicina - ?
+        WHERE sifra = ?
+        `,
+        [kolicina, sifra]
+    );
+}
+
 module.exports = {
     dohvatiSve,
-    pronadjiPoSifri
+    pronadjiPoSifri,
+    smanjiKolicinu
 };
