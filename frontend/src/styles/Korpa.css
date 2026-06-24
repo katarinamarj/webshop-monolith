@@ -1,0 +1,111 @@
+.korpa-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 50px 30px;
+    min-height: 70vh;
+}
+
+.korpa-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.korpa-card {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    width: 100%;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 25px 35px;
+    transition: all 0.3s ease;
+}
+
+.korpa-card:hover {
+    border-color: #4f46e5;
+    transform: translateY(-2px);
+}
+
+.korpa-card img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.korpa-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.korpa-info h3 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.korpa-info p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.stavka-ukupno {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #8fa7ff;
+}
+
+.korpa-actions {
+    margin-top: 10px;
+}
+
+.obrisi-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.obrisi-btn:hover {
+    background: #b91c1c;
+}
+
+.korpa-summary {
+    margin-top: 35px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.korpa-summary h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.poruci-btn {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.poruci-btn:hover {
+    background: #4338ca;
+}

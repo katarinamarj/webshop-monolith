@@ -3,6 +3,7 @@ import Login from "./pages/LoginPage";
 import Registracija from "./pages/RegistracijaPage";
 import Dashboard from "./pages/Dashboard";
 import ProizvodPage from "./pages/ProizvodPage";
+import KorpaPage from "./pages/KorpaPage";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/registracija" element={<Registracija />} />
                 <Route path="/proizvodi/:sifra" element={<ProizvodPage />}/>
+                <Route path="/korpa" element={<KorpaPage />}/>
             </Routes>
         </BrowserRouter>
     );

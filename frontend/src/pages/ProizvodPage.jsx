@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { dohvatiProizvod } from "../services/dashboardService";
 import "../styles/ProizvodPage.css";
+import { dodajUKorpu } from "../services/korpaService";
 
 function ProizvodPage() {
     const { sifra } = useParams();
@@ -28,6 +29,16 @@ function ProizvodPage() {
         return <p>Učitavanje...</p>;
     }
 
+    const handleDodajUKorpu = async () => {
+        try {
+            await dodajUKorpu(proizvod.sifra);
+
+        } catch (err) {
+            console.error(err);
+            alert("Greška pri dodavanju u korpu");
+        }
+    };
+
     return (
         <>
             <Header prijavljen={prijavljen} />
@@ -48,7 +59,7 @@ function ProizvodPage() {
                         <div className="kupovina-sekcija">
                             <p className="cena">{proizvod.cena} RSD</p>
 
-                            <button className="korpa-btn" disabled={!prijavljen} >
+                            <button className="korpa-btn" disabled={!prijavljen} onClick={handleDodajUKorpu}>
                                 Dodaj u korpu
                             </button>
                         </div>
