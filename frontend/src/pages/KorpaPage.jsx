@@ -3,9 +3,11 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {dohvatiKorpu, obrisiStavkuIzKorpe} from "../services/korpaService";
 import "../styles/Korpa.css";
+import { useNavigate } from "react-router-dom";
 
 function KorpaPage() {
     const [stavke, setStavke] =useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         ucitajKorpu();
@@ -67,8 +69,8 @@ function KorpaPage() {
 
                         <div className="korpa-summary">
                             <h2> Ukupno:{" "}{ukupnaCena}{" "}RSD</h2>
-
-                            <button className="poruci-btn">Poruči</button>
+                            
+                            <button className="poruci-btn" onClick={() =>navigate("/poruci")}>Poruči</button>
                         </div>
                     </>
                 )}
