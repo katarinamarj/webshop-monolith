@@ -46,6 +46,19 @@ async function kreirajPorudzbinu(korisnikId, podaci) {
     return porudzbinaId;
 }
 
+async function dohvatiMojePorudzbine(korisnikId) {
+    return await porudzbinaModel.dohvatiPoKorisniku(korisnikId);
+}
+
+async function dohvatiPorudzbinu(porudzbinaId) {
+    const porudzbina = await porudzbinaModel.dohvatiDetalje(porudzbinaId);
+    const stavke = await porudzbinaModel.dohvatiStavke(porudzbinaId);
+
+    return {...porudzbina,stavke};
+}
+
 module.exports = {
-    kreirajPorudzbinu
+    kreirajPorudzbinu,
+    dohvatiMojePorudzbine,
+    dohvatiPorudzbinu
 };

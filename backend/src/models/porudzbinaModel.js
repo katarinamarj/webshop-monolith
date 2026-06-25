@@ -129,10 +129,84 @@ async function kreirajPlacanje(porudzbinaId, iznos) {
     );
 }
 
+async function dohvatiPoKorisniku(korisnikId) {
+    const [rows] = await db.query(
+        `
+        SELECT
+            porudzbina_id,
+            datum,
+            status,
+            ukupan_iznos
+        FROM porudzbina
+        WHERE korisnik_id = ?
+        ORDER BY datum DESC
+        `,
+        [korisnikId]
+    );
+
+    return rows;
+}
+
+async function dohvatiDetalje(porudzbinaId) {
+    const [rows] = await db.query(
+        `
+        SELECT
+            p.porudzbina_id,
+            p.datum,
+            p.status,
+            p.ukupan_iznos,
+
+            pi.ulica,
+            pi.grad,
+            pi.postanski_broj,
+            pi.telefon
+
+        FROM porudzbina p
+
+        JOIN podacizaisporuku pi
+            ON p.podaci_za_isporuku_id =
+               pi.podaci_za_isporuku_id
+
+        WHERE p.porudzbina_id = ?
+        `,
+        [porudzbinaId]
+    );
+
+    return rows[0];
+}
+
+async function dohvatiStavke(porudzbinaId) {
+    const [rows] = await db.query(
+        `
+        SELECT
+            sp.kolicina,
+            sp.cena,
+
+            pr.sifra,
+            pr.naziv,
+            pr.slika
+
+        FROM stavkaporudzbine sp
+
+        JOIN proizvod pr
+            ON sp.sifraProizvoda =
+               pr.sifra
+
+        WHERE sp.porudzbina_id = ?
+        `,
+        [porudzbinaId]
+    );
+
+    return rows;
+}
+
 module.exports = {
     kreiraj,
     kreirajPodatkeZaIsporuku,
     dodajStavkuPorudzbine,
     smanjiStanjeProizvoda,
-    kreirajPlacanje
+    kreirajPlacanje,
+    dohvatiPoKorisniku,
+    dohvatiDetalje,
+    dohvatiStavke
 };

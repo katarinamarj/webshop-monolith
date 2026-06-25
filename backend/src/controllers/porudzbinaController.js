@@ -9,6 +9,28 @@ async function kreiraj(req, res) {
     }
 }
 
+async function mojePorudzbine(req, res) {
+    try {
+        const porudzbine = await porudzbinaService.dohvatiMojePorudzbine(req.korisnik.korisnikId);
+        res.json(porudzbine);
+
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+}
+
+async function detalji(req,res) {
+    try {
+        const porudzbina = await porudzbinaService.dohvatiPorudzbinu(req.params.id);
+        res.json(porudzbina);
+
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+}
+
 module.exports = {
-    kreiraj
+    kreiraj,
+    mojePorudzbine,
+    detalji
 };
