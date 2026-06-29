@@ -14,6 +14,7 @@ export const prijava = async (podaci) => {
 
     localStorage.setItem("accessToken", response.data.accessToken);
     localStorage.setItem("refreshToken", response.data.refreshToken);
+    localStorage.setItem("uloga", response.data.uloga);
 
     return response.data;
 };

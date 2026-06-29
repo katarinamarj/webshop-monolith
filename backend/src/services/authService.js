@@ -78,7 +78,8 @@ async function prijava(email, lozinka) {
 
     return {
         accessToken,
-        refreshToken
+        refreshToken,
+        uloga: korisnik.uloga
     };
 }
 

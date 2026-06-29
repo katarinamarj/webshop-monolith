@@ -10,6 +10,8 @@ function Header({ prijavljen }) {
         location.pathname === "/login" ||
         location.pathname === "/registracija";
 
+    const uloga = localStorage.getItem("uloga");
+
     const handleLogout = async () => {
 
         try {
@@ -20,6 +22,7 @@ function Header({ prijavljen }) {
 
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
+        localStorage.removeItem("uloga");
 
         window.location.href = "/";
     };
@@ -38,7 +41,24 @@ function Header({ prijavljen }) {
                             <Link to="/login">Prijava</Link>
                             <Link to="/registracija">Registracija</Link>
                         </>
-                    ) : (
+                    ) : uloga === "admin" ? (
+                        <>
+                            <Link to="/admin/proizvodi">
+                                Proizvodi
+                            </Link>
+
+                            <Link to="/admin/porudzbine">
+                                Porudžbine
+                            </Link>
+
+                            <button
+                                className="logout-btn"
+                                onClick={handleLogout}
+                            >
+                                Odjava
+                            </button>
+                        </>
+                        ) : (
                         <>
                             <Link to="/korpa">Korpa</Link>
                             <Link to="/porudzbine">Moje porudžbine</Link>
