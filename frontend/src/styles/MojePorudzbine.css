@@ -1,0 +1,78 @@
+.porudzbine-container {
+    width: 70%;
+    margin: 40px auto;
+    padding: 20px;
+    min-height: 70vh;
+}
+.porudzbine-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.porudzbina-card {
+    background: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 18px;
+    padding: 28px;
+    transition: .3s;
+}
+
+.porudzbina-card:hover {
+    transform: translateY(-3px);
+    border-color: #555;
+}
+
+.porudzbina-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.porudzbina-header h3 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+}
+
+.desna-strana {
+    text-align: right;
+}
+
+.desna-strana h2 {
+    margin-top: 15px;
+    color: #4ade80;
+    font-size: 1.7rem;
+}
+
+.stavke-tabela {
+    margin-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.stavke-header,
+.stavka-red {
+    display: grid;
+    grid-template-columns: 1fr 120px 140px;
+    gap: 20px;
+    padding: 14px 0;
+}
+
+.stavke-header {
+    font-weight: bold;
+    color: #888;
+}
+
+.stavka-red {
+    border-top: 1px solid #2d2d2d;
+    color: #ddd;
+}
+
+.stavka-red:hover {
+    background: rgba(255,255,255,.03);
+}
+
+.porudzbine-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
