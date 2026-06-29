@@ -200,6 +200,41 @@ async function dohvatiStavke(porudzbinaId) {
     return rows;
 }
 
+async function dohvatiSve() {
+    const [rows] = await db.query(`
+        SELECT
+            p.porudzbina_id,
+            p.datum,
+            p.status,
+            p.ukupan_iznos,
+            k.ime,
+            k.prezime,
+            k.email,
+            pi.ulica,
+            pi.grad,
+            pi.postanski_broj,
+            pi.telefon
+        FROM porudzbina p
+        JOIN korisnik k
+            ON p.korisnik_id = k.korisnik_id
+        JOIN podacizaisporuku pi
+            ON p.podaci_za_isporuku_id =
+               pi.podaci_za_isporuku_id
+        ORDER BY p.datum DESC
+    `);
+
+    return rows;
+}
+
+async function promeniStatus(porudzbinaId, status) {
+    await db.query(`
+        UPDATE porudzbina
+        SET status = ?
+        WHERE porudzbina_id = ?
+    `,[status, porudzbinaId]);
+
+}
+
 module.exports = {
     kreiraj,
     kreirajPodatkeZaIsporuku,
@@ -208,5 +243,7 @@ module.exports = {
     kreirajPlacanje,
     dohvatiPoKorisniku,
     dohvatiDetalje,
-    dohvatiStavke
+    dohvatiStavke,
+    dohvatiSve,
+    promeniStatus
 };

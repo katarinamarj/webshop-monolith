@@ -63,8 +63,23 @@ async function dohvatiPorudzbinu(porudzbinaId) {
     return {...porudzbina,stavke};
 }
 
+async function dohvatiSvePorudzbine() {
+    const porudzbine = await porudzbinaModel.dohvatiSve();
+
+    for (const porudzbina of porudzbine) {
+        porudzbina.stavke = await porudzbinaModel.dohvatiStavke(porudzbina.porudzbina_id);
+    }
+    return porudzbine;
+}
+
+async function promeniStatus(porudzbinaId, status) {
+    await porudzbinaModel.promeniStatus(porudzbinaId, status);
+}
+
 module.exports = {
     kreirajPorudzbinu,
     dohvatiMojePorudzbine,
-    dohvatiPorudzbinu
+    dohvatiPorudzbinu,
+    dohvatiSvePorudzbine,
+    promeniStatus
 };
