@@ -8,6 +8,7 @@ import PlacanjePage from "./pages/PlacanjePage";
 import PoruciPage from "./pages/PoruciPage";
 import UspesnaPorudzbinaPage from "./pages/UspesnaPorudzbinaPage";
 import MojePorudzbinePage from "./pages/MojePorudzbinePage";
+import AdminPorudzbinePage from "./pages/adminPorudzbinePage";
 
 function App() {
     return (
@@ -24,6 +25,10 @@ function App() {
                 <Route path="/placanje" element={<PlacanjePage />}/>
                 <Route path="/uspesna-porudzbina/:id" element={<UspesnaPorudzbinaPage />}/>
                 <Route path="/porudzbine" element={<MojePorudzbinePage />}/>
+                <Route
+    path="/admin/porudzbine"
+    element={<AdminPorudzbinePage />}
+/>
             </Routes>
         </BrowserRouter>
     );
