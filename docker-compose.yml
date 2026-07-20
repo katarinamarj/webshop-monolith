@@ -1,0 +1,43 @@
+services:
+
+  db:
+    image: mysql:8.0
+    container_name: webshop-db
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: webshop_db
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/webshop_db.sql:/docker-entrypoint-initdb.d/webshop_db.sql
+
+  backend:
+    build: ./backend
+    container_name: webshop-backend
+
+    ports:
+      - "5000:5000"
+
+    depends_on:
+      - db
+
+    env_file:
+      - ./backend/.env.docker
+
+  frontend:
+    build: ./frontend
+    container_name: webshop-frontend
+
+    ports:
+      - "5173:5173"
+
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:

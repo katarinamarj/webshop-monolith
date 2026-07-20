@@ -2,7 +2,7 @@ const db = require("../db/db");
 
 async function sacuvaj(token, datumIsteka, korisnikId) {
     await db.query(
-        `INSERT INTO RefreshToken
+        `INSERT INTO refreshtoken
         (token, datum_isteka, korisnik_id)
         VALUES (?, ?, ?)`,
         [token, datumIsteka, korisnikId]
@@ -11,7 +11,7 @@ async function sacuvaj(token, datumIsteka, korisnikId) {
 
 async function pronadjiPoTokenu(token) {
     const [rows] = await db.query(
-        "SELECT * FROM RefreshToken WHERE token = ?",
+        "SELECT * FROM refreshtoken WHERE token = ?",
         [token]
     );
     return rows[0];
@@ -19,7 +19,7 @@ async function pronadjiPoTokenu(token) {
 
 async function obrisiPoTokenu(token) {
     await db.query(
-        "DELETE FROM RefreshToken WHERE token = ?",
+        "DELETE FROM refreshtoken WHERE token = ?",
         [token]
     );
 }

@@ -2,7 +2,7 @@ const db = require("../db/db");
 
 async function pronadjiPoEmail(email) {
     const [rows] = await db.query(
-        "SELECT * FROM Korisnik WHERE email = ?",
+        "SELECT * FROM korisnik WHERE email = ?",
         [email]
     );
     return rows[0];
@@ -10,7 +10,7 @@ async function pronadjiPoEmail(email) {
 
 async function kreiraj(korisnik) {
     const [result] = await db.query(
-        `INSERT INTO Korisnik
+        `INSERT INTO korisnik
         (ime, prezime, email, lozinka, uloga)
         VALUES (?, ?, ?, ?, ?)`,
         [
